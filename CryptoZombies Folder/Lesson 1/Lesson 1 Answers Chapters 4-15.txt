@@ -1,0 +1,260 @@
+CHAPTER 4 - MATH OPERATIONS
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+}
+
+CHAPTER 5 - STRUCT
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+// start here
+struct Zombie {
+string name;
+uint dna;
+}
+}
+
+CHAPTER 6 - ARRAYS
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+// start here
+
+}
+
+CHAPTER 7 - FUNCTION DECLARATIONS
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function createZombie (string memory _name, uint _dna) public {
+// start here
+}
+
+}
+
+CHAPTER 8 - WORKING WITH STRUCTS AND ARRAYS
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function createZombie(string memory _name, uint _dna) public {
+zombies.push(Zombie(_name, _dna));
+}
+
+}
+
+CHAPTER 9 - PRIVATE / PUBLIC FUNCTIONS 
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function _createZombie(string memory _name, uint _dna) private {
+zombies.push(Zombie(_name, _dna));
+}
+
+// start here
+
+}
+
+CHAPTER 10 - MORE ON FUNCTIONS 
+=========================================================================================
+
+pragma solidity ^0.4.25;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function _createZombie(string memory _name, uint _dna) private {
+zombies.push(Zombie(_name, _dna));
+} 
+
+function _generateRandomDna(string memory _str) private view returns (uint) {
+// start here
+}
+
+}
+
+CHAPTER 11 - KECCAK 256 AND TYPECASTING
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function _createZombie(string memory _name, uint _dna) private {
+zombies.push(Zombie(_name, _dna));
+} 
+
+function _generateRandomDna(string memory _str) private view returns (uint) {
+uint rand = uint(keccak256(abi.encodePacked(_str)));
+return rand % dnaModulus;
+}
+
+// start here
+
+}
+
+CHAPTER 12 - PUTTING IT TOGETHER
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+// declare our event here
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function _createZombie(string memory _name, uint _dna) private {
+zombies.push(Zombie(_name, _dna));
+// and fire it here
+} 
+
+function _generateRandomDna(string memory _str) private view returns (uint) {
+uint rand = uint(keccak256(abi.encodePacked(_str)));
+return rand % dnaModulus;
+}
+
+function createRandomZombie(string memory _name) public {
+uint randDna = _generateRandomDna(_name);
+_createZombie(_name, randDna);
+}
+
+}
+
+CHAPTER 13 - EVENTS
+=========================================================================================
+
+pragma solidity >=0.5.0 <0.6.0;
+
+contract ZombieFactory {
+
+// declare our event here
+event NewZombie(uint zombieId, string name, uint dna);
+
+uint dnaDigits = 16;
+uint dnaModulus = 10 ** dnaDigits;
+
+struct Zombie {
+string name;
+uint dna;
+}
+
+Zombie[] public zombies;
+
+function _createZombie(string memory _name, uint _dna) private {
+uint id = zombies.push(Zombie(_name, _dna)) - 1;
+// and fire it here
+emit NewZombie(id, _name, _dna);
+} 
+
+function _generateRandomDna(string memory _str) private view returns (uint) {
+uint rand = uint(keccak256(abi.encodePacked(_str)));
+return rand % dnaModulus;
+}
+
+function createRandomZombie(string memory _name) public {
+uint randDna = _generateRandomDna(_name);
+_createZombie(_name, randDna);
+}
+
+}
+
+CHAPTER 14 - WEB3.JS
+=========================================================================================
+
+
+CHAPTER 15 - MY CRYPTOZOMBIE
+=========================================================================================
+
+https://cryptozombies.io/en/lesson/1/chapter/15
